@@ -1,4 +1,4 @@
-import dash_hash
+import cif_hash
 from binascii import unhexlify, hexlify
 
 import unittest
@@ -32,7 +32,7 @@ header_hex = ("02000000" +
     "f0ff0f1e" +
     "dbf70100")
 
-best_hash = '434341c0ecf9a2b4eec2644cfadf4d0a07830358aed12d0ed654121dd9070000'
+best_hash = 'a7e70ec03cbc7e990e80be779c8baa7aa56a059d6dfcda2ac4a4d2c8061adcd4'
 
 class TestSequenceFunctions(unittest.TestCase):
 
@@ -40,8 +40,8 @@ class TestSequenceFunctions(unittest.TestCase):
         self.block_header = unhexlify(header_hex)
         self.best_hash = best_hash
 
-    def test_dash_hash(self):
-        self.pow_hash = hexlify(dash_hash.getPoWHash(self.block_header))
+    def test_cif_hash(self):
+        self.pow_hash = hexlify(cif_hash.getPoWHash(self.block_header))
         self.assertEqual(self.pow_hash.decode(), self.best_hash)
 
 
